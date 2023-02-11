@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier -w \"pages/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -20,6 +21,8 @@
     "@types/react-dom": "18.0.10",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
+    "eslint-config-prettier": "^8.6.0",
+    "prettier": "^2.8.4",
     "typescript": "4.9.5"
   },
   "packageManager": "yarn@3.4.1"
