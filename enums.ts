@@ -1,0 +1,30 @@
+export const cities = [
+  { key: "ab'dendriel", name: "Ab'Dendriel", origin: true },
+  { key: "ankrahmun", name: "Ankrahmun", origin: true },
+  { key: "carlin", name: "Carlin", origin: true },
+  { key: "cormaya", name: "Cormaya", origin: true },
+  { key: "darashia", name: "Darashia", origin: true },
+  { key: "edron", name: "Edron", origin: true },
+  { key: "farmine", name: "Farmine", origin: true },
+  { key: "femor hills", name: "Femor Hills", origin: false },
+  { key: "gnomegate", name: "Gnomegate", origin: false },
+  { key: "issavi", name: "Issavi", origin: true },
+  { key: "kazordoon", name: "Kazordoon", origin: true },
+  { key: "krailos", name: "Krailos", origin: true },
+  { key: "liberty bay", name: "Liberty Bay", origin: true },
+  { key: "oramond", name: "Oramond", origin: true },
+  { key: "port hope", name: "Port Hope", origin: true },
+  { key: "roshamuul", name: "Roshamuul", origin: true },
+  { key: "svargrond", name: "Svargrond", origin: true },
+  { key: "thais", name: "Thais", origin: true },
+  { key: "venore", name: "Venore", origin: true },
+  { key: "yalahar", name: "Yalahar", origin: true },
+] as const
+
+export const transports = [
+  { key: "boat", name: "Boat" },
+  { key: "gcts", name: "GCTS" },
+  { key: "carpet", name: "Magic Carpet" },
+  { key: "steam ship", name: "Steam Ship" },
+  { key: "walk", name: "Walk" },
+] as const
