@@ -43,7 +43,7 @@ export const routes: Route[] = [
   { from: "liberty bay", to: "darashia", weight: 200, transport: "boat" },
   { from: "liberty bay", to: "edron", weight: 170, transport: "boat" },
   { from: "liberty bay", to: "port hope", weight: 50, transport: "boat" },
-  { from: "liberty bay", to: "thais", weight: 180, transport: "boat" },
+  { from: "liberty bay", to: "thais", weight: 180, transport: "boat", extra: "May become stranded in Goroma" },
   { from: "liberty bay", to: "venore", weight: 180, transport: "boat" },
   { from: "liberty bay", to: "yalahar", weight: 400, transport: "boat", extra: "Captain Max" },
   { from: "oramond", to: "issavi", weight: 120, transport: "boat" },
