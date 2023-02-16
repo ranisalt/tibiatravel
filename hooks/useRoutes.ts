@@ -10,7 +10,12 @@ const farmineDiscount = applyDiscount(
   (r) => (r.from === "farmine" || r.to === "farmine") && r.transport === "steam ship",
   50
 )
-const postmanDiscount = applyDiscount(({ transport: t }) => t === "boat" || t === "carpet" || t === "steam ship", 10)
+
+const postmanDiscount = applyDiscount(
+  ({ to, transport }) =>
+    to !== "gray island" && (transport === "boat" || transport === "carpet" || transport === "steam ship"),
+  10
+)
 
 export const useRoutes = ({ farmineSteamShip, postman, ...options }: RouteOptions) => {
   const availableRoutes = useMemo(

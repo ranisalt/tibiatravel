@@ -8,6 +8,7 @@ export const cities = [
   { key: "farmine", name: "Farmine", origin: true },
   { key: "femor hills", name: "Femor Hills", origin: false },
   { key: "gnomegate", name: "Gnomegate", origin: false },
+  { key: "gray island", name: "Gray Island", origin: false },
   { key: "issavi", name: "Issavi", origin: true },
   { key: "kazordoon", name: "Kazordoon", origin: true },
   { key: "krailos", name: "Krailos", origin: true },
