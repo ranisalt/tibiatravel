@@ -10,7 +10,8 @@ describe("Routes", () => {
 
   const { result: routes } = renderHook(() =>
     useRoutes({
-      farmine: false,
+      farmineCarpet: false,
+      farmineSteamShip: false,
       oramond: false,
       postman: false,
       walk: false,

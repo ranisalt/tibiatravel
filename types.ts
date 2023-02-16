@@ -1,9 +1,12 @@
 import { cities, transports } from "./enums"
 
-export type City = typeof cities[number]
-export type Transport = typeof transports[number]
+export type City = (typeof cities)[number]
+export type Transport = (typeof transports)[number]
 
-export type RouteOptions = Record<"farmine" | "oramond" | "postman" | "walk" | "yalahar", boolean>
+export type RouteOptions = Record<
+  "farmineCarpet" | "farmineSteamShip" | "oramond" | "postman" | "walk" | "yalahar",
+  boolean
+>
 
 export type Route = {
   from: City["key"]
@@ -11,5 +14,5 @@ export type Route = {
   weight: number
   transport: Transport["key"]
   extra?: string
-  conditions?: Exclude<keyof RouteOptions, "postman">[]
+  conditions?: Exclude<keyof RouteOptions, "farmineSteamShip" | "postman">[]
 }

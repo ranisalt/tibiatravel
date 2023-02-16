@@ -14,7 +14,8 @@ const Home = () => {
   const [from, setFrom] = useState<CityKey>(cities[0].key)
   const [to, setTo] = useState<CityKey>(cities[0].key)
   const [options, setOptions] = useState<RouteOptions>({
-    farmine: false,
+    farmineCarpet: false,
+    farmineSteamShip: false,
     oramond: false,
     postman: false,
     walk: false,
