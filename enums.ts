@@ -2,7 +2,7 @@ export const cities = [
   { key: "ab'dendriel", name: "Ab'Dendriel", origin: true },
   { key: "ankrahmun", name: "Ankrahmun", origin: true },
   { key: "carlin", name: "Carlin", origin: true },
-  { key: "cormaya", name: "Cormaya", origin: true },
+  { key: "cormaya", name: "Cormaya", origin: false },
   { key: "darashia", name: "Darashia", origin: true },
   { key: "edron", name: "Edron", origin: true },
   { key: "farmine", name: "Farmine", origin: true },
