@@ -4,6 +4,9 @@ import { Block, Checkbox, Extendable, Flex, Text } from "vcc-ui"
 import { controlsCSS } from "./shared"
 
 const optionLabels: Record<keyof RouteOptions, string> = {
+  explorerSocietyIceMusic:
+    "Completed secondary mission The Ice Music of The Explorer Society quest (access to the portal between Liberty Bay and Svargrond, requires completing the main quest).",
+  explorerSocietyRankIV: "Completed The Explorer Society quest (access to the portal between Northport and Port Hope).",
   farmineCarpet: "Completed The New Frontier quest (access to Farmine magic carpet).",
   farmineSteamShip: "Completed mission 2 of The New Frontier quest (50 gp discount from/to Farmine via steam ship).",
   oramond: "Achieved the rank of Citizen in the Rathleton quest (more boat routes from/to Oramond).",
@@ -34,6 +37,8 @@ export const Options = ({
       <Text foreground="foreground.secondary">Options:</Text>
 
       <Flex extend={controlsCSS}>
+        <Checkbox {...getProps("explorerSocietyIceMusic")} />
+        <Checkbox {...getProps("explorerSocietyRankIV")} />
         <Checkbox {...getProps("farmineCarpet")} />
         <Checkbox {...getProps("farmineSteamShip")} />
         <Checkbox {...getProps("oramond")} />

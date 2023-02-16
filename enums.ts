@@ -24,9 +24,10 @@ export const cities = [
 
 export const transports = [
   { key: "boat", name: "Boat" },
-  { key: "horse", name: "Rented Horse" },
-  { key: "gcts", name: "GCTS" },
   { key: "carpet", name: "Magic Carpet" },
+  { key: "explorer society portal", name: "Explorer Society Portal" },
+  { key: "gcts", name: "GCTS" },
+  { key: "horse", name: "Rented Horse" },
   { key: "steam ship", name: "Steam Ship" },
   { key: "walk", name: "Walk" },
 ] as const

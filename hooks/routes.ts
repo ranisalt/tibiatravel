@@ -258,4 +258,34 @@ export const routes: Route[] = [
   { from: "yalahar", to: "port hope", weight: 260, transport: "boat", conditions: ["yalahar"] },
   { from: "yalahar", to: "thais", weight: 200, transport: "boat", conditions: ["yalahar"] },
   { from: "yalahar", to: "venore", weight: 185, transport: "boat", conditions: ["yalahar"] },
+
+  // explorer society
+  {
+    from: "carlin",
+    to: "port hope",
+    weight: 0,
+    transport: "explorer society portal",
+    conditions: ["explorerSocietyRankIV", "walk"],
+  },
+  {
+    from: "port hope",
+    to: "carlin",
+    weight: 0,
+    transport: "explorer society portal",
+    conditions: ["explorerSocietyRankIV", "walk"],
+  },
+  {
+    from: "liberty bay",
+    to: "svargrond",
+    weight: 0,
+    transport: "explorer society portal",
+    conditions: ["explorerSocietyIceMusic", "explorerSocietyRankIV"],
+  },
+  {
+    from: "svargrond",
+    to: "liberty bay",
+    weight: 0,
+    transport: "explorer society portal",
+    conditions: ["explorerSocietyIceMusic", "explorerSocietyRankIV"],
+  },
 ]

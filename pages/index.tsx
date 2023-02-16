@@ -14,6 +14,8 @@ const Home = () => {
   const [from, setFrom] = useState<CityKey>(cities[0].key)
   const [to, setTo] = useState<CityKey>(cities[0].key)
   const [options, setOptions] = useState<RouteOptions>({
+    explorerSocietyIceMusic: false,
+    explorerSocietyRankIV: false,
     farmineCarpet: false,
     farmineSteamShip: false,
     oramond: false,

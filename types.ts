@@ -4,7 +4,14 @@ export type City = (typeof cities)[number]
 export type Transport = (typeof transports)[number]
 
 export type RouteOptions = Record<
-  "farmineCarpet" | "farmineSteamShip" | "oramond" | "postman" | "walk" | "yalahar",
+  | "explorerSocietyIceMusic"
+  | "explorerSocietyRankIV"
+  | "farmineCarpet"
+  | "farmineSteamShip"
+  | "oramond"
+  | "postman"
+  | "walk"
+  | "yalahar",
   boolean
 >
 
