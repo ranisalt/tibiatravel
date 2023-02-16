@@ -23,6 +23,7 @@ export const cities = [
 
 export const transports = [
   { key: "boat", name: "Boat" },
+  { key: "horse", name: "Rented Horse" },
   { key: "gcts", name: "GCTS" },
   { key: "carpet", name: "Magic Carpet" },
   { key: "steam ship", name: "Steam Ship" },

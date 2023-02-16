@@ -110,6 +110,10 @@ export const routes: Route[] = [
   { from: "kazordoon", to: "cormaya", weight: 160, transport: "steam ship" },
   { from: "kazordoon", to: "farmine", weight: 210, transport: "steam ship" },
 
+  // horse
+  { from: "thais", to: "venore", weight: 125, transport: "horse" },
+  { from: "venore", to: "thais", weight: 125, transport: "horse" },
+
   // farmine magic carpet
   { from: "darashia", to: "farmine", weight: 60, transport: "carpet", conditions: ["farmineCarpet"] },
   { from: "edron", to: "farmine", weight: 60, transport: "carpet", conditions: ["farmineCarpet"] },
