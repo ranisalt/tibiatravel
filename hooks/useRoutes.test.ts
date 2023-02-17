@@ -6,7 +6,10 @@ import { useRoutes } from "./useRoutes"
 
 describe("Routes", () => {
   type CityPair = [City["key"], City["key"]]
-  const pairs = cities.map((source) => cities.map((target) => [source.key, target.key] as CityPair))
+  const originCities = cities.filter((city) => city.origin).map(({ key }) => key)
+  const pairs = originCities
+    .flatMap((source) => originCities.map((target) => [source, target] as CityPair))
+    .filter(([a, b]) => a !== b)
 
   const { result: routes } = renderHook(() =>
     useRoutes({
@@ -21,8 +24,8 @@ describe("Routes", () => {
     })
   )
 
-  it.each(pairs)("should find the route for every city pair - (%s, %s)", ([source, target]) => {
-    const { result: path } = renderHook(() => useCheapestRoute(routes.current, source, target))
-    expect(path).not.toBeUndefined()
+  it.each(pairs)("should find the route for every city pair - (%s, %s)", (source, target) => {
+    const { result } = renderHook(() => useCheapestRoute(routes.current, source, target))
+    expect(result.current).not.toHaveLength(0)
   })
 })
