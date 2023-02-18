@@ -1,7 +1,8 @@
 import type { RouteOptions } from "@/types"
-import { ChangeEvent, useCallback } from "react"
-import { Block, Checkbox, Extendable, Flex, Text } from "vcc-ui"
-import { controlsCSS } from "./shared"
+import { InputHTMLAttributes, useCallback } from "react"
+import { Controls } from "./Controls"
+import { Legend } from "./Legend"
+import styles from "./options.module.css"
 
 const optionLabels: Record<keyof RouteOptions, string> = {
   explorerSocietyIceMusic:
@@ -16,36 +17,35 @@ const optionLabels: Record<keyof RouteOptions, string> = {
 }
 
 export const Options = ({
-  extend,
-  options,
+  gridArea,
   onChange,
-}: Extendable & {
-  options: RouteOptions
+  options,
+}: {
+  gridArea: string
   onChange: (checked: Partial<RouteOptions>) => void
+  options: RouteOptions
 }) => {
   const getProps = useCallback(
-    (key: keyof RouteOptions) => ({
+    (key: keyof RouteOptions): InputHTMLAttributes<HTMLInputElement> => ({
       checked: options[key],
-      label: optionLabels[key],
-      onChange: (e: ChangeEvent<HTMLInputElement>) => onChange({ [key]: e.target.checked }),
+      onChange: (e) => onChange({ [key]: e.target.checked }),
+      type: "checkbox",
     }),
     [options, onChange]
   )
 
   return (
-    <Block extend={extend}>
-      <Text foreground="foreground.secondary">Options:</Text>
+    <div style={{ gridArea }}>
+      <Legend>Options:</Legend>
 
-      <Flex extend={controlsCSS}>
-        <Checkbox {...getProps("explorerSocietyIceMusic")} />
-        <Checkbox {...getProps("explorerSocietyRankIV")} />
-        <Checkbox {...getProps("farmineCarpet")} />
-        <Checkbox {...getProps("farmineSteamShip")} />
-        <Checkbox {...getProps("oramond")} />
-        <Checkbox {...getProps("postman")} />
-        <Checkbox {...getProps("walk")} />
-        <Checkbox {...getProps("yalahar")} />
-      </Flex>
-    </Block>
+      <Controls>
+        {Object.entries(optionLabels).map(([key, label]) => (
+          <label key={key} className={styles.checkbox}>
+            <input {...getProps(key)} />
+            <span>{label}</span>
+          </label>
+        ))}
+      </Controls>
+    </div>
   )
 }

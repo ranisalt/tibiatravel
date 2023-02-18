@@ -4,13 +4,21 @@
   margin: 0;
 }
 
+:root {
+  --baseline-grid: 8px;
+  --container-width: 64rem;
+
+  --color-background-primary: #ffffff;
+  --color-foreground-secondary: #707070;
+  --color-ornament-divider: #ebebeb;
+}
+
 html {
   color-scheme: light dark;
 }
 
 html,
 body {
-  --container-width: 64rem;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -18,4 +26,12 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #0a0a0a;
+    --color-foreground-secondary: #a3a3a3;
+    --color-ornament-divider: #292929;
+  }
 }

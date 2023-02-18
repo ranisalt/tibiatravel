@@ -1,0 +1,19 @@
+.banner {
+  background-color: var(--color-background-primary);
+  padding: calc(var(--baseline-grid) * 3);
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--baseline-grid) * 2);
+  margin-inline: auto;
+  max-width: var(--container-width);
+  width: 100%;
+}
+
+.headerText {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}

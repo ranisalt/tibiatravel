@@ -1,0 +1,5 @@
+.legend {
+  color: var(--color-foreground-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+}

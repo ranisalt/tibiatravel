@@ -1,47 +1,29 @@
 import { PropsWithChildren, useMemo } from "react"
-import { Block, Extendable, ExtendCSS, Text } from "vcc-ui"
+import styles from "./table.module.css"
 
-type Props = PropsWithChildren<Extendable & { columns: { label: string; width: string }[] }>
+type Props = PropsWithChildren<{ columns: { label: string; width: string }[]; gridArea: string }>
 
-export const Table = ({ extend, columns, children }: Props) => {
+export const Table = ({ columns, gridArea, children }: Props) => {
   const gridTemplateColumns = useMemo(
     () => columns.map(({ width }) => `minmax(max-content, ${width})`).join(" "),
     [columns]
   )
 
   return (
-    <Block extend={[tableCSS, { gridTemplateColumns }, extend]}>
+    <div className={styles.table} style={{ gridArea, gridTemplateColumns }}>
       <TableRow>
         {columns.map(({ label }, i) => (
-          <Text subStyle="emphasis" key={i}>
+          <div key={i} className={styles.th}>
             {label}
-          </Text>
+          </div>
         ))}
       </TableRow>
 
       {children}
-    </Block>
+    </div>
   )
 }
 
-const TableRow = ({ children }: PropsWithChildren) => <Block extend={rowCSS}>{children}</Block>
-
-const tableCSS: ExtendCSS = ({ theme: { baselineGrid } }) => ({
-  display: "grid",
-  columnGap: baselineGrid,
-})
-
-const rowCSS: ExtendCSS = ({ theme: { baselineGrid, color } }) => ({
-  display: "grid",
-  gridTemplateColumns: "subgrid",
-  gridColumn: "1 / -1",
-  paddingBlock: baselineGrid,
-
-  "&:not(:last-child)": {
-    borderBlockEndWidth: 1,
-    borderBlockEndColor: color.ornament.divider,
-    borderBlockEndStyle: "solid",
-  },
-})
+const TableRow = ({ children }: PropsWithChildren) => <div className={styles.tr}>{children}</div>
 
 Table.Row = TableRow

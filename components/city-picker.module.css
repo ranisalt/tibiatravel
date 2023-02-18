@@ -1,0 +1,5 @@
+.radio {
+  display: flex;
+  gap: var(--baseline-grid);
+  padding: calc(var(--baseline-grid) / 2);
+}

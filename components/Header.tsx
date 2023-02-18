@@ -1,24 +1,11 @@
-import { Block, ExtendCSS, Flex, Icon, Text } from "vcc-ui"
+import { Icon } from "vcc-ui"
+import styles from "./header.module.css"
 
 export const Header = () => (
-  <Block extend={barCSS}>
-    <Flex extend={headerCSS}>
+  <div className={styles.banner}>
+    <header className={styles.header}>
       <Icon type="map-route-40" />
-      <Text variant="ootah">Tibia Travel</Text>
-    </Flex>
-  </Block>
+      <span className={styles.headerText}>Tibia Travel</span>
+    </header>
+  </div>
 )
-
-const barCSS: ExtendCSS = ({ theme: { baselineGrid, color } }) => ({
-  backgroundColor: color.background.primary,
-  padding: baselineGrid * 3,
-})
-
-const headerCSS: ExtendCSS = ({ theme: { baselineGrid } }) => ({
-  alignItems: "center",
-  flexDirection: "row",
-  gap: baselineGrid * 2,
-  marginInline: "auto",
-  maxWidth: "var(--container-width)",
-  width: "100%",
-})

@@ -1,17 +1,44 @@
-import { Extendable, Flex, Radio, RadioGroup, RadioGroupProps } from "vcc-ui"
 import { cities } from "@/enums"
-import { controlsCSS } from "./shared"
+import type { City } from "@/types"
+import { InputHTMLAttributes, useCallback } from "react"
+import styles from "./city-picker.module.css"
+import { Controls } from "./Controls"
+import { Legend } from "./Legend"
 
 const originCities = cities.map((city, index) => ({ ...city, index })).filter(({ origin }) => origin)
 
-type Props = Extendable & Pick<RadioGroupProps, "legend" | "name" | "onChange" | "value">
+type Props = {
+  gridArea: string
+  legend: string
+  name: string
+  setValue: (key: City["key"]) => void
+  value: City["key"]
+}
 
-export const CityPicker = ({ extend, ...props }: Props) => (
-  <RadioGroup {...props}>
-    <Flex extend={[controlsCSS, extend]}>
-      {originCities.map(({ name, key }) => (
-        <Radio key={key} value={key} label={name} />
-      ))}
-    </Flex>
-  </RadioGroup>
-)
+export const CityPicker = ({ gridArea, legend, name, setValue, value }: Props) => {
+  const getProps = useCallback(
+    (key: City["key"]): InputHTMLAttributes<HTMLInputElement> => ({
+      checked: key === value,
+      name,
+      onChange: () => setValue(key),
+      type: "radio",
+      value: key,
+    }),
+    [name, setValue, value]
+  )
+
+  return (
+    <div style={{ gridArea }}>
+      <Legend>{legend}</Legend>
+
+      <Controls>
+        {originCities.map(({ name, key }) => (
+          <label key={key} className={styles.radio}>
+            <input {...getProps(key)} />
+            <span>{name}</span>
+          </label>
+        ))}
+      </Controls>
+    </div>
+  )
+}
