@@ -1,4 +1,4 @@
-import type { Route, RouteOptions, Transport } from "@/types"
+import type { Route, RouteOptions } from "@/types"
 import { all, compress } from "histar"
 import { useMemo } from "react"
 import { routes } from "./routes"

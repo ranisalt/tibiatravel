@@ -182,7 +182,7 @@ export const routes: Route[] = [
   { from: "edron", to: "oramond", weight: 110, transport: "boat", conditions: ["oramond"] },
   { from: "krailos", to: "oramond", weight: 60, transport: "boat", conditions: ["oramond"] },
   { from: "oramond", to: "edron", weight: 110, transport: "boat", conditions: ["oramond"] },
-  { from: "oramond", to: "issavi", weight: 120, transport: "boat", conditions: ["oramond"] },
+  { from: "oramond", to: "issavi", weight: 80, transport: "boat", conditions: ["oramond"] }, // ?
   { from: "oramond", to: "krailos", weight: 60, transport: "boat", conditions: ["oramond"] },
   { from: "oramond", to: "port hope", weight: 200, transport: "boat", conditions: ["oramond"] },
   { from: "oramond", to: "thais", weight: 150, transport: "boat", conditions: ["oramond"] },
