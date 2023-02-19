@@ -1,5 +1,5 @@
-import type { City, Route } from "@/types"
 import { useMemo } from "react"
+import type { City, Route } from "../types"
 import { dijkstra, recreatePath } from "./dijkstra"
 
 export const useCheapestRoute = (routes: Route[], source: City["key"], target: City["key"]) => {

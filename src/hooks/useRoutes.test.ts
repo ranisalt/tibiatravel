@@ -1,6 +1,6 @@
-import type { City } from "@/types"
 import { renderHook } from "@testing-library/react"
 import { cities } from "../enums"
+import type { City } from "../types"
 import { useCheapestRoute } from "./useCheapestRoute"
 import { useRoutes } from "./useRoutes"
 
@@ -12,16 +12,25 @@ describe("Routes", () => {
     .filter(([a, b]) => a !== b)
 
   const { result: routes } = renderHook(() =>
-    useRoutes({
-      explorerSocietyIceMusic: false,
-      explorerSocietyRankIV: false,
-      farmineCarpet: false,
-      farmineSteamShip: false,
-      oramond: false,
-      postman: false,
-      walk: false,
-      yalahar: false,
-    })
+    useRoutes(
+      {
+        explorerSocietyIceMusic: false,
+        explorerSocietyRankIV: false,
+        farmineCarpet: false,
+        farmineSteamShip: false,
+        oramond: false,
+        postman: false,
+        yalahar: false,
+      },
+      {
+        boat: true,
+        carpet: false,
+        "explorer society portal": false,
+        horse: false,
+        "steam ship": true,
+        walk: true,
+      }
+    )
   )
 
   it.each(pairs)("should find the route for every city pair - (%s, %s)", (source, target) => {
