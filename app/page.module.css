@@ -5,7 +5,7 @@
 .content {
   display: grid;
   gap: calc(var(--baseline-grid) * 3);
-  grid-template: "from to" "options options" "route route" / 1fr 1fr;
+  grid-template: "from to" "accesses accesses" "transports transports" "route route" / 1fr 1fr;
   margin-inline: auto;
   max-width: var(--container-width);
 }
@@ -29,7 +29,7 @@
 
 @media screen and (min-width: 1024px) {
   .content {
-    grid-template: "from to options" auto "route route route" auto / 1fr 1fr 2fr;
+    grid-template: "from to accesses" "from to transports" "route route route" / 1fr 1fr 2fr;
     row-gap: calc(var(--baseline-grid) * 6);
   }
 }

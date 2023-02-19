@@ -26,7 +26,7 @@ export const transports = [
   { key: "boat", name: "Boat" },
   { key: "carpet", name: "Magic Carpet" },
   { key: "explorer society portal", name: "Explorer Society Portal" },
-  { key: "gcts", name: "GCTS" },
+  // { key: "gcts", name: "GCTS" },
   { key: "horse", name: "Rented Horse" },
   { key: "steam ship", name: "Steam Ship" },
   { key: "walk", name: "Walk" },

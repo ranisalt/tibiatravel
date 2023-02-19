@@ -1,8 +1,8 @@
 "use client"
-import { CityPicker, Options, Table } from "@/components"
+import { Accesses, CityPicker, Table, Transports } from "@/components"
 import { cities, transports } from "@/enums"
 import { useCheapestRoute, useRoutes } from "@/hooks"
-import type { RouteOptions } from "@/types"
+import type { AccessOptions, TransportOptions } from "@/types"
 import { useState } from "react"
 import styles from "./page.module.css"
 
@@ -18,21 +18,32 @@ const Home = () => {
   type CityKey = keyof typeof cityByKey
   const [from, setFrom] = useState<CityKey>(cities[0].key)
   const [to, setTo] = useState<CityKey>(cities[0].key)
-  const [options, setOptions] = useState<RouteOptions>({
+
+  const [accesses, setAccesses] = useState<AccessOptions>({
     explorerSocietyIceMusic: false,
     explorerSocietyRankIV: false,
     farmineCarpet: false,
     farmineSteamShip: false,
     oramond: false,
     postman: false,
-    walk: false,
     yalahar: false,
   })
 
-  const routes = useRoutes(options)
+  const [transports, setTransports] = useState<TransportOptions>({
+    boat: true,
+    carpet: false,
+    "explorer society portal": false,
+    horse: false,
+    "steam ship": false,
+    walk: false,
+  })
+
+  const routes = useRoutes(accesses, transports)
   const route = useCheapestRoute(routes, from, to)
 
   const total = route.reduce((total, { weight }) => total + weight, 0)
+
+  console.log({ routes, route, total })
 
   return (
     <div className={styles.wrapper}>
@@ -40,13 +51,27 @@ const Home = () => {
         <CityPicker gridArea="from" name="from" legend="From:" value={from} setValue={(key) => setFrom(key)} />
         <CityPicker gridArea="to" name="to" legend="To:" value={to} setValue={(key) => setTo(key)} />
 
-        <Options
-          gridArea="options"
-          onChange={(checked) => setOptions((options) => ({ ...options, ...checked }))}
-          options={options}
+        <Accesses
+          gridArea="accesses"
+          onChange={(checked) => setAccesses((accesses) => ({ ...accesses, ...checked }))}
+          options={accesses}
         />
 
-        {from !== to ? (
+        <Transports
+          gridArea="transports"
+          onChange={(checked) => setTransports((transports) => ({ ...transports, ...checked }))}
+          value={transports}
+        />
+
+        {from === to ? (
+          <div className={`${styles.route} ${styles.emptyRoute}`}>
+            <span className={styles.emphasis}>🛈 Pick different cities to calculate route</span>
+          </div>
+        ) : route.length === 0 ? (
+          <div className={`${styles.route} ${styles.emptyRoute}`}>
+            <span className={styles.emphasis}>🛈 There is no route available, check options</span>
+          </div>
+        ) : (
           <Table
             columns={[
               { label: "From", width: "1fr" },
@@ -71,10 +96,6 @@ const Home = () => {
               <div className={styles.emphasis}>{`Total: ${total} gp`}</div>
             </Table.Row>
           </Table>
-        ) : (
-          <div className={`${styles.route} ${styles.emptyRoute}`}>
-            <span className={styles.emphasis}>🛈 Pick different cities to calculate route</span>
-          </div>
         )}
       </main>
     </div>

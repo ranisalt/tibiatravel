@@ -1,10 +1,10 @@
-import type { RouteOptions } from "@/types"
+import type { AccessOptions } from "@/types"
 import { InputHTMLAttributes, useCallback } from "react"
 import { Controls } from "./Controls"
 import { Legend } from "./Legend"
 import styles from "./options.module.css"
 
-const optionLabels: Record<keyof RouteOptions, string> = {
+const accessLabels: Record<keyof AccessOptions, string> = {
   explorerSocietyIceMusic:
     "Completed secondary mission The Ice Music of The Explorer Society quest (access to the portal between Liberty Bay and Svargrond, requires completing the main quest).",
   explorerSocietyRankIV: "Completed The Explorer Society quest (access to the portal between Northport and Port Hope).",
@@ -12,21 +12,20 @@ const optionLabels: Record<keyof RouteOptions, string> = {
   farmineSteamShip: "Completed mission 2 of The New Frontier quest (50 gp discount from/to Farmine via steam ship).",
   oramond: "Achieved the rank of Citizen in the Rathleton quest (more boat routes from/to Oramond).",
   postman: "Completed mission 6 of the Postman Missions quest (10 gp discount on boats and carpets).",
-  walk: "Walk between cities that are connected by land.",
   yalahar: "Completed Searoutes around Yalahar quest.",
 }
 
-export const Options = ({
+export const Accesses = ({
   gridArea,
   onChange,
   options,
 }: {
   gridArea: string
-  onChange: (checked: Partial<RouteOptions>) => void
-  options: RouteOptions
+  onChange: (checked: Partial<AccessOptions>) => void
+  options: AccessOptions
 }) => {
   const getProps = useCallback(
-    (key: keyof RouteOptions): InputHTMLAttributes<HTMLInputElement> => ({
+    (key: keyof AccessOptions): InputHTMLAttributes<HTMLInputElement> => ({
       checked: options[key],
       onChange: (e) => onChange({ [key]: e.target.checked }),
       type: "checkbox",
@@ -36,10 +35,10 @@ export const Options = ({
 
   return (
     <div style={{ gridArea }}>
-      <Legend>Options:</Legend>
+      <Legend>Accesses:</Legend>
 
       <Controls>
-        {Object.entries(optionLabels).map(([key, label]) => (
+        {Object.entries(accessLabels).map(([key, label]) => (
           <label key={key} className={styles.checkbox}>
             <input {...getProps(key)} />
             <span>{label}</span>

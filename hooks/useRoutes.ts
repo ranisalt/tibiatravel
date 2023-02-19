@@ -1,4 +1,4 @@
-import type { Route, RouteOptions } from "@/types"
+import type { AccessOptions, Route, TransportOptions } from "@/types"
 import { all, compress } from "histar"
 import { useMemo } from "react"
 import { routes } from "./routes"
@@ -17,10 +17,11 @@ const postmanDiscount = applyDiscount(
   10
 )
 
-export const useRoutes = ({ farmineSteamShip, postman, ...options }: RouteOptions) => {
+export const useRoutes = ({ farmineSteamShip, postman, ...accesses }: AccessOptions, transports: TransportOptions) => {
   const availableRoutes = useMemo(
-    () => routes.filter(({ conditions = [] }) => all(conditions, (condition) => options[condition])),
-    [options]
+    () =>
+      routes.filter(({ transport, conditions = [] }) => transports[transport] && all(conditions, (c) => accesses[c])),
+    [accesses, transports]
   )
 
   const filters = useMemo(
