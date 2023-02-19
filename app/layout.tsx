@@ -1,19 +1,14 @@
 "use client"
-import type { ReactNode } from "react"
-import "@/styles/globals.css"
-import { StyleProvider, ThemePicker } from "vcc-ui"
 import { Header } from "@/components"
+import "@/styles/globals.css"
+import type { ReactNode } from "react"
 
 const Layout = ({ children }: { children: ReactNode }) => (
   <html lang="en">
     <body>
-      <StyleProvider>
-        <ThemePicker variant="dark">
-          <Header />
+      <Header />
 
-          {children}
-        </ThemePicker>
-      </StyleProvider>
+      {children}
     </body>
   </html>
 )

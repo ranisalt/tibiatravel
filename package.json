@@ -15,8 +15,7 @@
     "histar": "0.1.3",
     "next": "13.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "vcc-ui": "3.13.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "14.0.0",

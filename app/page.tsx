@@ -4,7 +4,6 @@ import { cities, transports } from "@/enums"
 import { useCheapestRoute, useRoutes } from "@/hooks"
 import type { RouteOptions } from "@/types"
 import { useState } from "react"
-import { Icon } from "vcc-ui"
 import styles from "./page.module.css"
 
 export const metadata = {
@@ -74,8 +73,7 @@ const Home = () => {
           </Table>
         ) : (
           <div className={`${styles.route} ${styles.emptyRoute}`}>
-            <Icon type="info-24" />
-            <div className={styles.emphasis}>Pick different cities to calculate route</div>
+            <span className={styles.emphasis}>🛈 Pick different cities to calculate route</span>
           </div>
         )}
       </main>

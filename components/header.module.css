@@ -4,13 +4,18 @@
 }
 
 .header {
-  align-items: center;
+  align-items: baseline;
+  color: var(--color-foreground-primary);
   display: flex;
   flex-direction: row;
   gap: calc(var(--baseline-grid) * 2);
   margin-inline: auto;
   max-width: var(--container-width);
   width: 100%;
+}
+
+.headerIcon {
+  font-size: 3rem;
 }
 
 .headerText {
