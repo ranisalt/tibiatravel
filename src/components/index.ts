@@ -1,5 +1,5 @@
 export { Accesses } from "./Accesses"
 export { CityPicker } from "./CityPicker"
-export { Header } from "./Header"
+export { Layout } from "./Layout"
 export { Table } from "./Table"
 export { Transports } from "./Transports"

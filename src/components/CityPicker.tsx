@@ -1,11 +1,17 @@
-import { cities } from "@/enums"
-import type { City } from "@/types"
 import { InputHTMLAttributes, useCallback } from "react"
-import styles from "./city-picker.module.css"
+import styled from "styled-components"
+import { cities } from "../enums"
+import type { City } from "../types"
 import { Controls } from "./Controls"
 import { Legend } from "./Legend"
 
 const originCities = cities.map((city, index) => ({ ...city, index })).filter(({ origin }) => origin)
+
+const Label = styled.label`
+  display: flex;
+  gap: var(--baseline-grid);
+  padding: calc(var(--baseline-grid) / 2);
+`
 
 type Props = {
   gridArea: string
@@ -33,10 +39,10 @@ export const CityPicker = ({ gridArea, legend, name, setValue, value }: Props) =
 
       <Controls>
         {originCities.map(({ name, key }) => (
-          <label key={key} className={styles.radio}>
-            <input {...getProps(key)} />
+          <Label key={key}>
+            <input type="radio" {...getProps(key)} />
             <span>{name}</span>
-          </label>
+          </Label>
         ))}
       </Controls>
     </div>

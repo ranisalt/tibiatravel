@@ -1,9 +1,9 @@
-import { transports } from "@/enums"
-import type { AccessOptions, Transport } from "@/types"
 import { InputHTMLAttributes, useCallback } from "react"
+import { transports } from "../enums"
+import type { AccessOptions, Transport } from "../../types"
+import { Checkbox } from "./Checkbox"
 import { Controls } from "./Controls"
 import { Legend } from "./Legend"
-import styles from "./options.module.css"
 
 export const Transports = ({
   gridArea,
@@ -29,10 +29,10 @@ export const Transports = ({
 
       <Controls>
         {transports.map(({ key, name }) => (
-          <label key={key} className={styles.checkbox}>
+          <Checkbox key={key}>
             <input {...getProps(key)} />
             <span>{name}</span>
-          </label>
+          </Checkbox>
         ))}
       </Controls>
     </div>

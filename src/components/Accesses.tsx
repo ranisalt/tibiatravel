@@ -1,8 +1,8 @@
-import type { AccessOptions } from "@/types"
 import { InputHTMLAttributes, useCallback } from "react"
+import type { AccessOptions } from "../types"
+import { Checkbox } from "./Checkbox"
 import { Controls } from "./Controls"
 import { Legend } from "./Legend"
-import styles from "./options.module.css"
 
 const accessLabels: Record<keyof AccessOptions, string> = {
   explorerSocietyIceMusic:
@@ -39,10 +39,10 @@ export const Accesses = ({
 
       <Controls>
         {Object.entries(accessLabels).map(([key, label]) => (
-          <label key={key} className={styles.checkbox}>
+          <Checkbox key={key}>
             <input {...getProps(key)} />
             <span>{label}</span>
-          </label>
+          </Checkbox>
         ))}
       </Controls>
     </div>

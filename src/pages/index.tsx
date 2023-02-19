@@ -1,21 +1,47 @@
 "use client"
-import { Accesses, CityPicker, Table, Transports } from "@/components"
-import { cities, transports } from "@/enums"
-import { useCheapestRoute, useRoutes } from "@/hooks"
-import type { AccessOptions, TransportOptions } from "@/types"
 import { useState } from "react"
-import styles from "./page.module.css"
+import styled from "styled-components"
+import { Accesses, CityPicker, Layout, Table, Transports } from "../components"
+import { cities, transports } from "../enums"
+import { useCheapestRoute, useRoutes } from "../hooks"
+import "../../styles/globals.css"
+import type { AccessOptions, TransportOptions } from "../types"
 
-export const metadata = {
-  title: "Tibia Travel",
-  description: "Find the cheapest route between two locations",
-}
+const cityByKey = Object.fromEntries(cities.map(({key, name}) => [key, name]))
+const transportByKey = Object.fromEntries(transports.map(({key, name}) => [key, name]))
 
-const cityByKey = Object.fromEntries(cities.map((city) => [city.key, city] as const))
-const transportByKey = Object.fromEntries(transports.map((transport) => [transport.key, transport] as const))
+const Main = styled.main`
+  display: grid;
+  gap: calc(var(--baseline-grid) * 3);
+  grid-template: "from to" "accesses accesses" "transports transports" "route route" / 1fr 1fr;
+  margin-inline: auto;
+  max-width: var(--container-width);
 
-const Home = () => {
-  type CityKey = keyof typeof cityByKey
+  @media screen and (min-width: 1024px) {
+    & {
+      grid-template: "from to accesses" "from to transports" "route route route" / 1fr 1fr 2fr;
+      row-gap: calc(var(--baseline-grid) * 6);
+    }
+  }
+`
+
+const EmptyRoute = styled.div`
+  column-gap: calc(var(--baseline-grid) * 2);
+  display: flex;
+  flex-direction: row;
+  grid-area: route;
+  justify-content: center;
+`
+
+const Emphasis = styled.div`
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+`
+
+const IndexPage = () => {
+  type CityKey = typeof cities[number]["key"]
+
   const [from, setFrom] = useState<CityKey>(cities[0].key)
   const [to, setTo] = useState<CityKey>(cities[0].key)
 
@@ -43,11 +69,9 @@ const Home = () => {
 
   const total = route.reduce((total, { weight }) => total + weight, 0)
 
-  console.log({ routes, route, total })
-
   return (
-    <div className={styles.wrapper}>
-      <main className={styles.content}>
+    <Layout>
+      <Main>
         <CityPicker gridArea="from" name="from" legend="From:" value={from} setValue={(key) => setFrom(key)} />
         <CityPicker gridArea="to" name="to" legend="To:" value={to} setValue={(key) => setTo(key)} />
 
@@ -64,13 +88,13 @@ const Home = () => {
         />
 
         {from === to ? (
-          <div className={`${styles.route} ${styles.emptyRoute}`}>
-            <span className={styles.emphasis}>🛈 Pick different cities to calculate route</span>
-          </div>
+          <EmptyRoute>
+            <Emphasis>🛈 Pick different cities to calculate route</Emphasis>
+          </EmptyRoute>
         ) : route.length === 0 ? (
-          <div className={`${styles.route} ${styles.emptyRoute}`}>
-            <span className={styles.emphasis}>🛈 There is no route available, check options</span>
-          </div>
+          <EmptyRoute>
+            <Emphasis>🛈 There is no route available, check options</Emphasis>
+          </EmptyRoute>
         ) : (
           <Table
             columns={[
@@ -84,22 +108,22 @@ const Home = () => {
           >
             {route.map(({ from, to, weight, transport, extra }) => (
               <Table.Row key={from}>
-                <div>{cityByKey[from].name}</div>
-                <div>{cityByKey[to].name}</div>
+                <div>{cityByKey[from]}</div>
+                <div>{cityByKey[to]}</div>
                 <div>{`${weight} gp`}</div>
-                <div>{transportByKey[transport].name}</div>
+                <div>{transportByKey[transport]}</div>
                 <div>{extra}</div>
               </Table.Row>
             ))}
 
             <Table.Row>
-              <div className={styles.emphasis}>{`Total: ${total} gp`}</div>
+              <Emphasis>{`Total: ${total} gp`}</Emphasis>
             </Table.Row>
           </Table>
         )}
-      </main>
-    </div>
+      </Main>
+    </Layout>
   )
 }
 
-export default Home
+export default IndexPage
