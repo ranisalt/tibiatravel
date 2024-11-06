@@ -248,7 +248,6 @@ export const routes: Route[] = [
   { from: "ankrahmun", to: "yalahar", weight: 230, transport: "boat", conditions: ["yalahar"] },
   { from: "carlin", to: "yalahar", weight: 185, transport: "boat", conditions: ["yalahar"] },
   { from: "darashia", to: "yalahar", weight: 210, transport: "boat", conditions: ["yalahar"] },
-  { from: "issavi", to: "yalahar", weight: 80, transport: "boat", conditions: ["yalahar"] },
   { from: "liberty bay", to: "yalahar", weight: 260, transport: "boat", conditions: ["yalahar"] },
   { from: "port hope", to: "yalahar", weight: 260, transport: "boat", conditions: ["yalahar"] },
   { from: "thais", to: "yalahar", weight: 200, transport: "boat", conditions: ["yalahar"] },
